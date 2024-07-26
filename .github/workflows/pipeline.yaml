@@ -14,10 +14,12 @@ jobs:
     - name: Run application
       uses: hoverkraft-tech/compose-action@v2.0.1
 
-    - name: Run tests
+    - name: Setup Test Env
       uses: actions/setup-python@v4
       with:
         python-version: '3.11'
+
+    - name: Run Tests
       run: |
         pip install -r tests/requirements.txt
         pytest tests

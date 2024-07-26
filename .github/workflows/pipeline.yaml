@@ -15,7 +15,12 @@ jobs:
       uses: hoverkraft-tech/compose-action@v2.0.1
 
     - name: Run tests
-      run: pytest tests
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+      run: |
+        pip install -r tests/requirements.txt
+        pytest tests
 
     - name: Configure AWS credentials
       if: success() && steps.run_tests.outcome == 'success'
